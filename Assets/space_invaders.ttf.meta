@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4be4f4d20f62e9948bc50bd90a5cd972
+timeCreated: 1485442217
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Space Invaders
+  fontNames:
+  - Space Invaders
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
