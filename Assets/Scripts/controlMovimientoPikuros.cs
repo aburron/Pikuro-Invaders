@@ -8,8 +8,11 @@ public class controlMovimientoPikuros : MonoBehaviour {
     GameObject controlador;
     public bool derecha = true; //si es true, se moveran a la derecha.
 
-    bool bajarPikuros = false; //si es true, todos los pikuros bajaran un poco, pero luego volverá a FALSE.
-    bool bajarPosible = true;  //si es true, se puede bajar. Si es false, no se podrá bajar.
+    [Header("NO TOCAR xd")]
+    public bool bajarPikuros = false; //si es true, todos los pikuros bajaran un poco, pero luego volverá a FALSE.
+    public bool bajarPosible = true;  //si es true, se puede bajar. Si es false, no se podrá bajar.
+
+    GameObject[] pikuros;
 
 	void Start () {
 		
@@ -33,11 +36,16 @@ public class controlMovimientoPikuros : MonoBehaviour {
 
     public void bajar()
     {
+        pikuros = GameObject.FindGameObjectsWithTag("pikuro");
         if (bajarPosible)
         {
             bajarPosible = false;
             bajarPikuros = true;
             StartCoroutine(esperar());
+            for (int i = 0; i < pikuros.Length; i++)
+            {
+                pikuros[i].GetComponent<controladorMovimientoPikuros>().bajar();
+            }
         }
     }
 
@@ -46,6 +54,5 @@ public class controlMovimientoPikuros : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 
         bajarPosible = true;
-        bajarPikuros = false;
     }
 }
