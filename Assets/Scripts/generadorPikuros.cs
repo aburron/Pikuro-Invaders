@@ -11,6 +11,8 @@ public class generadorPikuros : MonoBehaviour {
     public float offsetX = -10.0f, offsetY = +5.0f;
     public float separacionX = 1.8f, separacionY = 1.49f;
 
+    public GameObject[] pikuross = new GameObject[70];
+
 	void Start () {
         StartCoroutine(startGenerar());
 	}
@@ -34,11 +36,15 @@ public class generadorPikuros : MonoBehaviour {
         print("Done!");        
     }
 
+    int generados = 0;
     void generar(Vector2 vectorAGenerar)
     {
         Vector2 posicion = vectorAGenerar;  //Me gusta pasar la variable de la función a otra variable XD.
 
         print("generado pikuro en: " + posicion);
-        Instantiate(pikuroTypeA, posicion, Quaternion.identity);
+        GameObject go = Instantiate(pikuroTypeA, posicion, Quaternion.identity) as GameObject;
+
+        pikuross[generados] = go;
+        generados ++;
     }
 }

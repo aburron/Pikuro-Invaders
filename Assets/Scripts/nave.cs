@@ -20,7 +20,7 @@ public class nave : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(new Vector2(-velocidad, 0) * Time.deltaTime);
+            transform.Translate(new Vector2(-velocidad, 0)*Time.deltaTime);
         }
     }
 }
