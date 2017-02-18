@@ -6,7 +6,7 @@ public class controladorMovimientoPikuros : MonoBehaviour {
 
     GameObject controlador;
 
-    public float transladoPorPulso = 1.0f;
+    public float transladoPorPulso = 1.3f;
     public float bajadaPorPulso = 1.0f;     //En controlmovimiento ya se edita manualmente.
 
     void Start () {
@@ -39,7 +39,7 @@ public class controladorMovimientoPikuros : MonoBehaviour {
 
     IEnumerator mover()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
         if (controlador.GetComponent<controlMovimientoPikuros>().mover == true)
         {
             if (controlador.GetComponent<controlMovimientoPikuros>().derecha == true)

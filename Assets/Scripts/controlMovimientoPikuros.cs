@@ -56,7 +56,7 @@ public class controlMovimientoPikuros : MonoBehaviour {
             for (int i = 0; i < 70; i++)
             {
                 print(pikuross[i]);
-                pikuross[i].transform.Translate(new Vector2(0, -1));
+                pikuross[i].transform.Translate(new Vector2(0, -0.5f));
             }
         }
     }
