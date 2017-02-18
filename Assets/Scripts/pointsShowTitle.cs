@@ -21,7 +21,6 @@ public class pointsShowTitle : MonoBehaviour {
         {
             yield return new WaitForSeconds(tiempoDeEspera);
             objetos[i].SetActive(true);
-
         }        
     }
 }

@@ -7,6 +7,7 @@ public class controladorMovimientoPikuros : MonoBehaviour {
     GameObject controlador;
 
     public float transladoPorPulso = 1.0f;
+    public float bajadaPorPulso = 1.0f;     //En controlmovimiento ya se edita manualmente.
 
     void Start () {
         controlador = GameObject.Find("CONTROLADOR");
@@ -17,25 +18,40 @@ public class controladorMovimientoPikuros : MonoBehaviour {
 	void Update () {
         if(transform.position.x > 8.7)  //Si algun pikuro sobrepasa el limite DERECHO, envia la orden de alternar.
         {
-
+            controlador.GetComponent<controlMovimientoPikuros>().irIzquierda();
+            controlador.GetComponent<controlMovimientoPikuros>().bajar();
         }
-        if (transform.position.x < -8.7)  //Si algun pikuro sobrepasa el limite IZQUIERDO, envia la orden de alternar.
+        if (transform.position.x < -8)  //Si algun pikuro sobrepasa el limite IZQUIERDO, envia la orden de alternar.
         {
+            controlador.GetComponent<controlMovimientoPikuros>().irDerecha();
+            controlador.GetComponent<controlMovimientoPikuros>().bajar();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StartCoroutine(mover());
+        }
 
+        if (controlador.GetComponent<controlMovimientoPikuros>().bajarPikuros == true)
+        {
+            //  this.transform.Translate(new Vector2(0, -bajadaPorPulso));
         }
     }
 
     IEnumerator mover()
     {
-        yield return new WaitForSeconds(0.2f);
-        if(controlador.GetComponent<controlMovimientoPikuros>().derecha == true)
+        yield return new WaitForSeconds(0.6f);
+        if (controlador.GetComponent<controlMovimientoPikuros>().mover == true)
         {
-            this.transform.Translate(new Vector2(transladoPorPulso, 0));
-        }else
-        {
-            this.transform.Translate(new Vector2(-transladoPorPulso, 0));
-        }
+            if (controlador.GetComponent<controlMovimientoPikuros>().derecha == true)
+            {
+                this.transform.Translate(new Vector2(transladoPorPulso, 0));
+            }
+            else
+            {
+                this.transform.Translate(new Vector2(-transladoPorPulso, 0));
+            }
 
-        StartCoroutine(mover());
+            StartCoroutine(mover());
+        }
     }
 }
