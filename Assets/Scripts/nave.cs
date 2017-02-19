@@ -6,21 +6,37 @@ public class nave : MonoBehaviour {
 
     public float velocidad = 20.0f;
     public int vidas = 3;
+    public bool mover = false;
 
-	// Use this for initialization
+    public GameObject controladorPikuros;
+    public GameObject textoGameOver;
+    // Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (mover)
         {
-            transform.Translate(new Vector2(velocidad ,0)*Time.deltaTime);
+            if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 8.64f)
+            {
+                transform.Translate(new Vector2(velocidad, 0) * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -8.44f)
+            {
+                transform.Translate(new Vector2(-velocidad, 0) * Time.deltaTime);
+            }
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if(coll.gameObject.tag == "pikuro")
         {
-            transform.Translate(new Vector2(-velocidad, 0)*Time.deltaTime);
+            controladorPikuros.GetComponent<controlMovimientoPikuros>().parar();
+            textoGameOver.SetActive(true);
+            mover = false;
         }
     }
 }

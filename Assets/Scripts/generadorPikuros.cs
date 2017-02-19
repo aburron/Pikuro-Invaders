@@ -17,6 +17,10 @@ public class generadorPikuros : MonoBehaviour {
         StartCoroutine(startGenerar());
 	}
 
+    public void comenzar()  //  `POR SEGUIR
+    {
+
+    }
 
 	void Update () {
 		

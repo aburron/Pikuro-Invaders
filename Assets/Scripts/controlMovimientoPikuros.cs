@@ -6,6 +6,7 @@ public class controlMovimientoPikuros : MonoBehaviour {
 
 	
     GameObject controlador;
+    public GameObject nave;
     public bool mover = false;
     public bool derecha = true; //si es true, se moveran a la derecha.
 
@@ -20,9 +21,14 @@ public class controlMovimientoPikuros : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))    //  COMIENZA EL JUEGO
         {
             mover = true;
+            nave.GetComponent<nave>().mover = true;
+        }
+        if (Input.GetKeyDown(KeyCode.R))       //REINICIA LA ESCENA
+        {
+            reset();
         }
         cargar();
 
@@ -60,7 +66,27 @@ public class controlMovimientoPikuros : MonoBehaviour {
             }
         }
     }
+    public void parar()
+    {
+        mover = false;
+        bajarPosible = false;
+    }
+    public void reset()
+    {
+        try
+        {
+            for (int i = 0; i < 70; i++)
+            {
+                Destroy(pikuross[i].transform);
+            }
+        }
+        catch{}
 
+        nave.transform.position = new Vector2(0 , transform.position.y);
+
+
+        
+    }
     IEnumerator esperar()
     {
         yield return new WaitForSeconds(0.5f);
